@@ -26,7 +26,7 @@ framework:
 # https://github.com/symfony/symfony/issues/7885
     session:
         handler_id: session.handler.native_file
-        save_path: "/tmp/symfony2app/app/cache/sessions"
+        save_path: "/app/symfony2app/app/cache/sessions"
 
     fragments:       ~
     http_method_override: true
@@ -70,6 +70,33 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+        mappings:
+            gedmo_translatable:   false
+#                type: annotation
+#                prefix: Gedmo\Translatable\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+#                alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+#                is_bundle: false
+            gedmo_translator: false
+#                type: annotation
+#                prefix: Gedmo\Translator\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+#                alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+#                is_bundle: false
+            gedmo_loggable: false
+#                type: annotation
+#                prefix: Gedmo\Loggable\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+#                alias: GedmoLoggable # this one is optional and will default to the name set for the mapping
+#                is_bundle: false
+            gedmo_tree: false
+#                type: annotation
+#                prefix: Gedmo\Tree\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+#                alias: GedmoTree # this one is optional and will default to the name set for the mapping
+#                is_bundle: false
+
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -82,3 +109,18 @@ fos_user:
     db_driver:      orm
     firewall_name:  main
     user_class:     AppBundle\Entity\User
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            tree: false
+            translatable: false
+            sluggable: false
+            timestampable: false
+            blameable: false
+            loggable: false
+            sortable: false
+            softdeleteable: false
+            uploadable: false
+

@@ -27,8 +27,9 @@
         "behat/mink-extension": "~2.0@dev",
         "behat/mink-browserkit-driver": "~1.2@dev",
         "behat/mink-selenium2-driver": "~1.2@dev",
-        "behat/mink-goutte-driver": "~1.0"
+        "behat/mink-goutte-driver": "~1.0",
 
+        "stof/doctrine-extensions-bundle": "~1.1@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
