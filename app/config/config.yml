@@ -129,3 +129,10 @@ jms_debugging:
     # messages for public exceptions. If you leave this set to false, you have
     # to click the "search" button manually each time.
     auto_help: false
+
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default
+
