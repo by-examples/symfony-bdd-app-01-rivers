@@ -1,0 +1,4 @@
+*.bash      eol=lf
+bin/*       eol=lf
+*.php       eol=lf
+composer.*  eol=lf
