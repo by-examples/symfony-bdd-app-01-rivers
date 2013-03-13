@@ -32,7 +32,8 @@
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "jms/serializer-bundle": "~0.13",
         "doctrine/migrations": "1.0.*@dev",
-        "doctrine/doctrine-migrations-bundle": "2.1.*@dev"
+        "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "jms/debugging-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
