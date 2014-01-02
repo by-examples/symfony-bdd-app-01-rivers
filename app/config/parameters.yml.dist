@@ -1,13 +1,17 @@
 # This file is a "template" of what your parameters.yml file should look like
 parameters:
+
+    #mysql
     database_driver:   pdo_mysql
+
+    #postgresql
+    #database_driver:   pdo_pgsql
+
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     symfony
-    database_user:     root
-    database_password: ~
-    # You should uncomment this if you want use pdo_sqlite
-    # database_path: "%kernel.root_dir%/data.db3"
+    database_user:     symfony
+    database_password: symfony
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
