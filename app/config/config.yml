@@ -19,9 +19,14 @@ framework:
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
+
+# Problem with session when using Vagrant
+# http://symfony.com/doc/current/cookbook/session/sessions_directory.html
+# https://github.com/symfony/symfony/issues/7885
     session:
-        # handler_id set to null will use default session handler from php.ini
-        handler_id:  ~
+        handler_id: session.handler.native_file
+        save_path: "/tmp/symfony2app/app/cache/sessions"
+
     fragments:       ~
     http_method_override: true
 
