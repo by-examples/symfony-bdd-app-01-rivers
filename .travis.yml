@@ -1,0 +1,107 @@
+language: php
+
+php:
+  - 5.5
+
+before_install:
+
+# This file is necessary for travis.pp manifest
+# We want to avoid hardcoding the path to web
+  - sudo pwd > /tmp/travis-pwd.txt
+
+#
+# DEBUG
+#  - php --info
+#  - sudo pwd
+#  - sudo ls -la
+#  - whoami
+#  - groups travis
+#  - hostname -f
+#  - cat /etc/passwd
+#  - cat /etc/*rele*
+#  - sudo apt-get update -y
+#  - sudo dpkg --get-selections
+#  - which pwd
+#  - cat /tmp/travis-pwd.txt
+
+
+install:
+
+#  Install latest version of Puppet
+#  Default version 2.7 does not allow to use modules
+  - sudo wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+  - sudo dpkg -i puppetlabs-release-precise.deb
+  - sudo apt-get update -y
+  - sudo apt-get install puppet -y
+
+# DEBUG
+#  - sudo puppet --version
+#  - sudo facter
+
+
+#  Install Apache & Php & MySQL
+  - sudo puppet module install gajdaw-symfony
+  - sudo puppet apply puppet/travis.pp
+
+# DEBUG
+#  - sudo ls /etc/puppet/modules
+#  - sudo apache2 -v
+#  - sudo dpkg --get-selections
+
+
+before_script:
+
+  - ./initialize.bash
+
+# DEBUG
+#
+#  - '[ -d "/tmp" ] && ls -la /tmp'
+#  - '[ -d "/tmp/symfony2app" ] && ls -la /tmp/symfony2app'
+#  - '[ -d "/tmp/symfony2app/app" ] && ls -la /tmp/symfony2app/app'
+#  - '[ -d "/tmp/symfony2app/app/cache" ] && ls -la /tmp/symfony2app/app/cache'
+#  - '[ -d "/tmp/symfony2app/app/cache/sessions" ] && ls -la /tmp/symfony2app/app/cache/sessions'
+#  - '[ -d "/tmp/symfony2app/app/logs" ] && ls -la /tmp/symfony2app/app/logs'
+
+
+  - composer self-update
+  - composer install --no-interaction
+
+  - ./reload.bash
+
+#  - ls -la /tmp/symfony2app/app
+#  - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
+#  - ls -la /tmp/symfony2app/app
+#  - chown -R travis:travis /tmp/symfony2app
+#  - ls -la /tmp/symfony2app/app
+
+  - sleep 5
+
+after_failure:
+
+#  Print web dir
+  - sudo ls -la /var
+  - sudo ls -la /var/www
+  - sudo ls -la /var/html
+
+#  Print app's log
+  - sudo ls -la /tmp/symfony2app/app/logs
+  - sudo cat /tmp/symfony2app/app/logs/dev.log
+#  - cat /tmp/symfony2app/app/logs/prod/prod.log
+
+#  Print Apache's log
+  - sudo ls -la /var/
+  - sudo ls -la /var/log/
+  - sudo ls -la /var/log/apache2/
+  - sudo cat /var/log/apache2/access.log
+  - sudo cat /var/log/apache2/error.log
+
+
+script:
+#  When debugging use just one test and dump the contents
+#  - bin/behat --verbose features/home.feature
+
+  - bin/behat --verbose --stop-on-failure
+
+notifications:
+  email: false
+
