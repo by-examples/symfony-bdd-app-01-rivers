@@ -1,0 +1,123 @@
+language: php
+
+php:
+  - 5.5
+
+before_install:
+  - php --info
+  - sudo pwd
+  - sudo ls -la
+  - whoami
+  - groups travis
+  - hostname -f
+  - cat /etc/passwd
+  - sudo apt-get update -y
+
+install:
+
+#  Install latest version of Puppet
+#  Default version 2.7 does not allow to use modules
+  - sudo wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+  - sudo dpkg -i puppetlabs-release-precise.deb
+  - sudo apt-get update -y
+  - sudo apt-get install puppet -y
+  - sudo puppet --version
+
+
+#  Install Apache & Php & MySQL
+  - sudo puppet module install puppetlabs-stdlib
+  - sudo puppet module install gajdaw-php5
+  - sudo puppet module install puppetlabs-mysql
+  - sudo puppet apply puppet/manifest.pp
+
+
+#  Change the default Apache's web page into APP
+  - sudo ls -ls /var/
+  - sudo ls -ls /var/www
+  - sudo ls -ls /var/www/html
+
+  - sudo rm -rf /var/www/html
+  - sudo mkdir -p /var/www
+  - sudo ln -s  "$(pwd)/web" /var/www/html
+
+  - sudo ls -ls /var/
+  - sudo ls -ls /var/www
+  - sudo ls -ls /var/www/html
+
+  - sudo /etc/init.d/apache2 restart
+
+before_script:
+
+  - composer self-update
+
+  - mkdir -p /tmp/symfony2app/app/cache
+  - mkdir -p /tmp/symfony2app/app/logs
+  - mkdir -p /tmp/symfony2app/vendor/
+
+  - ls -la /tmp
+  - ls -la /tmp/symfony2app
+  - ls -la /tmp/symfony2app/app
+  - ls -la /tmp/symfony2app/app/cache
+  - ls -la /tmp/symfony2app/app/logs
+  - ls -la /tmp/symfony2app/vendor
+
+  - composer install --no-interaction
+  - pwd
+  - ls -la
+
+  - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
+#  - app/console cache:warmup --env=dev
+  - app/console cache:warmup --env=prod
+  - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
+
+  - ls -la /tmp/symfony2app/app/cache
+  - ls -la /tmp/symfony2app/app/logs
+
+
+  - chmod o+w /tmp/symfony2app/app/logs
+  - ls -la /tmp/symfony2app/app
+
+#  - mysql -u root < 00-extra/db/create-empty-database.sql
+#  - app/console doctrine:schema:update --force
+
+  - reload.bash
+
+  - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
+  - ls -la /tmp/symfony2app/app/cache
+  - ls -la /tmp/symfony2app/app/logs
+
+  - chown -R travis:travis /tmp/symfony2app/app/logs
+  - ls -la /tmp/symfony2app/app
+  - ls -la /tmp/symfony2app/app/logs
+
+  - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
+  - ls -la /tmp/symfony2app/app/cache
+  - ls -la /tmp/symfony2app/app/logs
+
+  - sleep 5
+
+after_failure:
+
+#  Print app's log
+  - sudo ls -la /tmp/symfony2app/app/logs
+#  - sudo ls -la /tmp/symfony2app/app/logs/prod
+#  - sudo ls -la /tmp/symfony2app/app/logs/prod/log
+  - sudo cat /tmp/symfony2app/app/logs/dev.log
+#  - cat /tmp/symfony2app/app/logs/prod/prod.log
+
+#  Print Apache's log
+#  - sudo ls -la /var/
+#  - sudo ls -la /var/log/
+  - sudo ls -la /var/log/apache2/
+  - sudo cat /var/log/apache2/access.log
+  - sudo cat /var/log/apache2/error.log
+
+
+script:
+#  When debugging use just one test and dump the contents
+#  - bin/behat --verbose features/home.feature
+
+  - bin/behat --verbose --stop-on-failure
+
+notifications:
+  email: false
