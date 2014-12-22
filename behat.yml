@@ -1,0 +1,19 @@
+default:
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+
+    suites:
+        default:
+            contexts:
+                - Context\FeatureContext
+
+    extensions:
+        Behat\MinkExtension:
+            base_url:  'http://localhost/'
+            sessions:
+                default:
+                    goutte: ~
+
