@@ -35,11 +35,10 @@ class River
      */
     private $length;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -49,7 +48,7 @@ class River
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return River
      */
     public function setName($name)
@@ -62,7 +61,7 @@ class River
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -72,7 +71,7 @@ class River
     /**
      * Set length
      *
-     * @param integer $length
+     * @param  integer $length
      * @return River
      */
     public function setLength($length)
@@ -85,7 +84,7 @@ class River
     /**
      * Get length
      *
-     * @return integer 
+     * @return integer
      */
     public function getLength()
     {
