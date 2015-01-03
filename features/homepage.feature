@@ -1,6 +1,5 @@
-Feature: Web pages
+Feature: I would like to...
 
-  Scenario: Homepage
-    Given I am on homepage
-    Then the response status code should be 200
-    Then I should see "Homepage."
+    Scenario: Homepage should be accessible
+      Given I am on homepage
+       Then I should see "The Longest Rivers in the World!"
