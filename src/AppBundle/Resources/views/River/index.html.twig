@@ -15,8 +15,12 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('admin_river_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
+                <td>{{ loop.index }}.</td>
+                <td>
+                    <a href="{{ path('admin_river_show', { 'id': entity.id }) }}">
+                        {{ entity.name }}
+                    </a>
+                </td>
                 <td>{{ entity.length }}</td>
                 <td>
                 <ul>
