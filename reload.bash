@@ -17,3 +17,6 @@ php app/console cache:clear --env=prod
 php app/console cache:warmup --env=prod
 
 php app/console doctrine:schema:update --force
+
+php app/console doctrine:fixtures:load -n
+php app/console fos:user:create admin admin@example.net loremipsum --super-admin
