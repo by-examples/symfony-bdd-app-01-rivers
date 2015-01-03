@@ -14,4 +14,13 @@ class DefaultController extends Controller
     {
         return $this->render('default/index.html.twig');
     }
+
+    /**
+     * @Route("/action/with/exception")
+     */
+    public function actionWithExceptionAction()
+    {
+        throw new \RuntimeException('Ups...');
+    }
+
 }
