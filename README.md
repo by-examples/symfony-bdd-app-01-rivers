@@ -37,5 +37,5 @@ Now, you can run the web browser and visit:
 
 ##5. Tested?
 
-Windows: not tested
+Windows: tested on January 3rd, 2015 - OK
 
