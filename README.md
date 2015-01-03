@@ -4,7 +4,7 @@ How to run the project?
 [![Build Status](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers.svg?branch=2.6.1%2Fsymfony-bdd-app-01-rivers)](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers)
 
 This example is explained in the post
-[Symfony/BDD/Behat/Tutorial: Application 01: Rivers](/2015/01/04/symfony-bdd-app-01-rivers.html).
+[Symfony/BDD/Behat/Tutorial: Application 01: Rivers](http://by-examples.net/2015/01/04/symfony-bdd-app-01-rivers.html).
 
 ##1. Preliminary step
 
