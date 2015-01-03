@@ -80,7 +80,7 @@ before_script:
 #  - mysql -u root < 00-extra/db/create-empty-database.sql
 #  - app/console doctrine:schema:update --force
 
-  - reload.bash
+  - ./reload.bash
 
   - sudo chmod -R 777 /tmp/symfony2app/app/cache /tmp/symfony2app/app/logs
   - ls -la /tmp/symfony2app/app/cache
