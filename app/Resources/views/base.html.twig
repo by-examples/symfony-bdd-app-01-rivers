@@ -18,6 +18,11 @@
                 {% if is_granted('ROLE_USER') %}
                     <li>Logged in as {{ app.user.username }}</li>
                     <li>
+                        <a href="{{ path('admin_river') }}">
+                            Panel
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                         </a>
