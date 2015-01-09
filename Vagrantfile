@@ -2,7 +2,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-    config.vm.box = "symfony-v0.4.4"
+    config.vm.box = "symfony-v0.4.5"
     config.vm.hostname = "abc.example.net"
 
     config.vm.provider :virtualbox do |v|
