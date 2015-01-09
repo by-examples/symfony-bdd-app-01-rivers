@@ -39,8 +39,8 @@ Now, you can run the web browser and visit:
     http://localhost:8880/
     http://localhost:8880/app_dev.php/
 
-##5. Tested?
+##5. Tests
 
 * symfony-v0.4.4
-  - Windows: tested on January 3rd, 2015 - OK
+  - Windows: 2015.01.03
 
