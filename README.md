@@ -41,7 +41,8 @@ Now, you can run the web browser and visit:
 
 ##5. Tested?
 
-Windows: tested on January 3rd, 2015 - OK
+* symfony-v0.4.4
+  - Windows: tested on January 3rd, 2015 - OK
 
 * symfony-v0.4.5
   - OS X: tested on January 9th, 2015 - OK
