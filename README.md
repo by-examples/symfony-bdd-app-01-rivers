@@ -45,4 +45,4 @@ Now, you can run the web browser and visit:
   - Windows: 2015.01.03
 
 * symfony-v0.4.5
-  - OS X: tested on January 9th, 2015 - OK
+  - OS X: 2015.01.09
