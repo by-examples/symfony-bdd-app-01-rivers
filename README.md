@@ -17,10 +17,14 @@ in the post titled
 
     $ git clone https://github.com/by-examples/symfony-bdd-app-01-rivers.git
     $ cd symfony-bdd-app-01-rivers
+    $ rm -rf bin/*
     $ vagrant up
     $ vagrant ssh
     $ composer install -o
     $ ./reload.bash
+
+The command `rm -rf bin/*` is necessary only when you want to run
+the example again from scratch for the second time.
 
 ##3. Running the tests
 
