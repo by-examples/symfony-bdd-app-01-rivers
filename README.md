@@ -1,7 +1,7 @@
 How to run the project?
 =======================
 
-[![Build Status](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers.svg?branch=2.6.1%2Fsymfony-bdd-app-01-rivers)](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers)
+[![Build Status](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers.svg?branch=2.6.4%2Fsymfony-v0.5.x%2Fsymfony-bdd-app-01-rivers)](https://travis-ci.org/by-examples/symfony-bdd-app-01-rivers)
 
 This example is explained in the post
 [Symfony/BDD/Behat/Tutorial: Application 01: Rivers](http://by-examples.net/2015/01/04/symfony-bdd-app-01-rivers.html).
